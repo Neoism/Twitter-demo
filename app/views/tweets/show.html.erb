@@ -1,0 +1,45 @@
+<div class="row">
+  <%= render "tweets/leftbar"%>
+
+  <div class="col-md-6 mainbar">
+    <div class="row head">
+      <h2>Show</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <%= attachment_image_tag @tweet.user, :profile_image, fallback: "no_image.jpg", class: "profile-img" %>
+      </div>
+      <div class="col-md-10">
+        <%= link_to @tweet.user.name, user_path(@tweet.user), class: "tweet-name" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p class="show-tweet-body"><%= @tweet.body%></p>
+      </div>
+    </div>
+
+    <%= form_for [@tweet, @comment] do |f| %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.text_area :comment %>
+          <br>
+          <%= f.submit 'コメントする' %>
+        </div>
+      </div>
+    <% end %>
+
+    <% @comments.each do |f| %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.comment %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <%= render "tweets/rightbar"%>
+</div>

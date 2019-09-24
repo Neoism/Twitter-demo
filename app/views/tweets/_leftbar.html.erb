@@ -1,0 +1,15 @@
+<div class="col-md-3 leftbar">
+  <ul>
+    <li><i class="fab fa-twitter"></i></li>
+    <li><%= link_to ' Home', tweets_path, class: "glyphicon glyphicon-home" %></li>
+    <li><%= link_to ' Profile', user_path(current_user), class: "glyphicon glyphicon-user"%></li>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to " logout", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+      </li>
+    <% end %>
+    <li>
+      <%= link_to "Tweet", new_tweet_path, class: "tweet-btn" %>
+    </li>
+  </ul>
+</div>

@@ -10,6 +10,22 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="body">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+
+    <footer>
+        <div class="container">
+          <div class="row">
+            <% if user_signed_in? %>
+              <%= link_to "logout", destroy_user_session_path, method: :delete %>
+            <% end%>
+          </div>
+        </div>
+    </footer>
+    
   </body>
 </html>
