@@ -21,6 +21,20 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <% if @tweet.favorited_by?(current_user) %>
+          <%= link_to tweet_favorites_path(@tweet), method: :delete do %>
+            <p class="glyphicon glyphicon-heart"> <%= @tweet.favorites.count %>いいね</p>
+          <% end %>
+        <% else %>
+          <%= link_to tweet_favorites_path(@tweet), method: :post do %>
+            <p class="glyphicon glyphicon-heart-empty"> <%= @tweet.favorites.count %>いいね</p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
     <%= form_for [@tweet, @comment] do |f| %>
       <div class="row">
         <div class="col-md-12">

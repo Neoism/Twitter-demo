@@ -1,4 +1,6 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def new
     @tweet = Tweet.new
   end
@@ -13,7 +15,7 @@ class TweetsController < ApplicationController
   end
 
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.reverse_order
   end
 
   def show
