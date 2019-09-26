@@ -4,9 +4,9 @@
 
     <%= form_for(@tweet) do |f| %>
       <h4>ツイート</h4>
-      <%= f.text_field :body %>
+      <%= f.text_field :body, class: "form" %>
       <br>
-      <%= f.submit '投稿' %>
+      <%= f.submit '投稿', class: "form" %>
     <% end %>
   </div>
 </div>

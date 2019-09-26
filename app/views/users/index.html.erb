@@ -1,0 +1,22 @@
+<div class="row">
+  <%= render 'tweets/leftbar' %>
+
+  <div class="col-md-6 mainbar">
+    <div class="row head">
+      <div class="col-md-12">
+        <h2>Users</h2>
+      </div>
+    </div>
+
+    <% @users.each do |user| %>
+      <div class="row">
+        <div class="col-md-2">
+          <%= attachment_image_tag user, :profile_image, fallback: "no_image.jpg", class: "profile-img" %>
+        </div>
+        <div class="col-md-10">
+          <%= link_to user.name, user_path(user) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

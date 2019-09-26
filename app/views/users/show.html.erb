@@ -6,18 +6,55 @@
       <h2><%= @user.name %></h2>
     </div>
     <div class="row">
-      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class: "profile_img" %>
-      <% if @user.id == current_user.id %>
-        <%= link_to "edit profile", edit_user_path(@user) %>
-      <% end %>
+      <div class="col-md-12">
+        <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", class: "profile_img" %>
+
+        <% if @user.id == current_user.id %>
+          <%= link_to "edit profile", edit_user_path(@user) %>
+        <% else %>
+          <% if current_user.following?(@user) %>
+            <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete}) do |f| %>
+              <%= f.submit "Unfollow", class: "btn btn-primary" %>
+            <% end %>
+          <% else %>
+            <%= form_for(current_user.active_relationships.build) do |f| %>
+              <div><%= hidden_field_tag :followed_id, @user.id %></div>
+              <%= f.submit "Follow", class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="row">
-      <h3><%= @user.name %></h3>
+      <div class="col-md-12">
+        <h3><%= @user.name %></h3>
+      </div>
     </div>
+
     <div class="row">
       <p><%= @user.introduction %></p>
     </div>
-    <div class="row tweets">
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= link_to following_user_path(@user) do %>
+          <strong>
+            <%= @user.following.count %>
+          </strong>
+          following
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <%= link_to followers_user_path(@user) do %>
+          <strong>
+            <%= @user.followers.count %>
+          </strong>
+          follower
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tweets">
       <% @tweets.each do |tweet| %>
         <div class="row tweet">
           <div class="col-md-2">
