@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Twitter-demo</h1>
+    <p>
+      本アプリはAmi Senoのポートフォリオになります。<br>
+      投稿の一覧、詳細の閲覧はログインなしでも利用可能ですが、<br>
+      新規投稿機能を利用される際はログインが必要になります。<br>
+      利用される際はSign upされるか、テスト用のアカウントをご利用ください。<br>
+      テスト用のアカウントの情報は以下になります。<br>
+      name: admin<br>
+      password: password
+    </p>
+
+
+    <div class="btn-wrapper">
+      <div class="row">
+        <p><%= link_to "ツイート一覧へ", tweets_path, class: "btn btn-default" %></p>
+        <p><%= link_to "SignUp", new_user_registration_path, class: "btn btn-success" %></p>
+        <p><%= link_to "Login", new_user_session_path, class: "btn btn-info" %></p>
+      </div>
+    </div>
+  </div>
+</div>

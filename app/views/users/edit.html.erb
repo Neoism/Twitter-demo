@@ -1,0 +1,34 @@
+<div class="row">
+  <%= render 'tweets/leftbar'%>
+
+  <div class="col-md-6 mainbar">
+    <div class="row head">
+      <h2>Edit profile</h2>
+    </div>
+    <%= form_for(@user) do |f| %>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :introduction %>
+        <%= f.text_field :introduction %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="field">
+        <%= f.label :profile_image %>
+        <%= f.attachment_field :profile_image %>
+      </div>
+
+      <%= f.submit 'Update profile'%>
+    <% end %>
+  </div>
+
+  <%= render 'tweets/rightbar'%>
+</div>

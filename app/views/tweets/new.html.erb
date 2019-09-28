@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2>新規ツイート</h2>
+
+    <%= form_for(@tweet) do |f| %>
+      <h4>ツイート</h4>
+      <%= f.text_field :body, class: "form" %>
+      <br>
+      <%= f.submit '投稿', class: "form" %>
+    <% end %>
+  </div>
+</div>

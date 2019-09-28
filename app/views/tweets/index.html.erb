@@ -1,0 +1,28 @@
+<div class="row">
+
+  <%= render 'leftbar' %>
+
+  <div class="col-md-6 mainbar">
+    <div class="row head">
+      <h2>Home</h2>
+    </div>
+    <div class="tweets">
+      <% @tweets.each do |tweet| %>
+        <div class="row tweet">
+          <div class="col-md-2">
+            <%= attachment_image_tag tweet.user, :profile_image, fallback: "no_image.jpg", class: "profile-img" %>
+          </div>
+          <div class="col-md-10">
+            <%= link_to tweet.user.name, user_path(tweet.user), class: "tweet-name" %><br>
+            <p class="index-tweet-body"><%= tweet.body %></p>
+            <br>
+            <%= link_to "show details", tweet_path(tweet) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render 'rightbar'%>
+
+</div>
